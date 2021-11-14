@@ -1,0 +1,62 @@
+name: Code Quality
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  phpunit:
+    name: PHPUnit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+
+      - name: Install Packages
+        run: composer install --no-interaction --no-progress --no-suggest
+
+      - name: Run PHPUnit
+        run: composer phpunit
+
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+
+      - name: Install Packages
+        run: composer install --no-interaction --no-progress --no-suggest
+
+      - name: Run PHPStan
+        run: composer phpstan
+
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+
+      - name: Install Packages
+        run: composer install --no-interaction --no-progress --no-suggest
+
+      - name: Check Format
+        run: composer phpcs
