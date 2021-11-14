@@ -1,0 +1,22 @@
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+parameters:
+    paths:
+        - src
+        - tests
+    level: max
+    ignoreErrors:
+        -
+            message: '#Call to function is_.+\(\) with .+ will always evaluate to true\.#'
+            path: src
+        -
+            message: '#Call to method PHPUnit\\Framework\\Assert::assert.+\(\) .+ will always evaluate to true\.#'
+            path: tests
+        -
+            message: '#Method .*Test::(test|dataProvider).* no value type specified in iterable type .*#'
+            path: tests
+        -
+            message: '#Dynamic call to static method PHPUnit\\Framework\\Assert::assert.*\(\).*#'
+            path: tests

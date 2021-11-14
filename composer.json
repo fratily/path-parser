@@ -1,0 +1,40 @@
+{
+    "name": "fratily/path-parser",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kento-oka",
+            "email": "kento-oka@kentoka.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12.99",
+        "phpstan/phpstan-phpunit": "^0.12.22",
+        "phpstan/phpstan-strict-rules": "^0.12.11",
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fratily\\PathParser\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fratily\\Tests\\PathParser\\": "tests/"
+        }
+    },
+    "scripts": {
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
+        "phpstan": "phpstan analyze",
+        "phpunit": "phpunit"
+    }
+}
