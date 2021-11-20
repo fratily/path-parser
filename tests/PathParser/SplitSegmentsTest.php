@@ -3,9 +3,6 @@
 namespace Fratily\Tests\PathParser\PathParser;
 
 use Fratily\PathParser\PathParser;
-use Fratily\PathParser\Segments\AnySegment;
-use Fratily\PathParser\Segments\SegmentInterface;
-use Fratily\PathParser\Segments\TrailingSlashSegment;
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
 
