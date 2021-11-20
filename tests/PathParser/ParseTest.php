@@ -5,7 +5,7 @@ namespace Fratily\Tests\PathParser\PathParser;
 use Fratily\PathParser\PathParser;
 use Fratily\PathParser\Segments\PlainSegment;
 use Fratily\PathParser\Segments\SegmentInterface;
-use Fratily\PathParser\Segments\TrailingSlashSegment;
+use Fratily\PathParser\Segments\SlashSegment;
 use PHPUnit\Framework\TestCase;
 
 class ParseTest extends TestCase
@@ -34,18 +34,18 @@ class ParseTest extends TestCase
             [
                 '/',
                 [
-                    TrailingSlashSegment::class,
+                    SlashSegment::class,
                     PlainSegment::class,
                 ],
                 [
-                    self::makeExpectedData(TrailingSlashSegment::class),
+                    self::makeExpectedData(SlashSegment::class),
                 ]
             ],
             [
                 '/',
                 [
                     PlainSegment::class,
-                    TrailingSlashSegment::class,
+                    SlashSegment::class,
                 ],
                 [
                     self::makeExpectedData(PlainSegment::class),
@@ -54,7 +54,7 @@ class ParseTest extends TestCase
             [
                 '/foo',
                 [
-                    TrailingSlashSegment::class,
+                    SlashSegment::class,
                     PlainSegment::class,
                 ],
                 [
@@ -65,7 +65,7 @@ class ParseTest extends TestCase
                 '/foo',
                 [
                     PlainSegment::class,
-                    TrailingSlashSegment::class,
+                    SlashSegment::class,
                 ],
                 [
                     self::makeExpectedData(PlainSegment::class, ['getSegment' => '/foo']),
@@ -74,19 +74,19 @@ class ParseTest extends TestCase
             [
                 '/foo/',
                 [
-                    TrailingSlashSegment::class,
+                    SlashSegment::class,
                     PlainSegment::class,
                 ],
                 [
                     self::makeExpectedData(PlainSegment::class, ['getSegment' => '/foo']),
-                    self::makeExpectedData(TrailingSlashSegment::class),
+                    self::makeExpectedData(SlashSegment::class),
                 ]
             ],
             [
                 '/foo/',
                 [
                     PlainSegment::class,
-                    TrailingSlashSegment::class,
+                    SlashSegment::class,
                 ],
                 [
                     self::makeExpectedData(PlainSegment::class, ['getSegment' => '/foo']),

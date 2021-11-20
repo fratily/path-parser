@@ -2,20 +2,20 @@
 
 namespace Fratily\Tests\PathParser\Segments;
 
-use Fratily\PathParser\Segments\TrailingSlashSegment;
+use Fratily\PathParser\Segments\SlashSegment;
 use PHPUnit\Framework\TestCase;
 
-class TrailingSlashSegmentTest extends TestCase
+class SlashSegmentTest extends TestCase
 {
     /**
      * @dataProvider dataProviderNew
      */
     public function testNew(string $plainSegment, bool $expectInstanceToBeReturned): void
     {
-        $result = TrailingSlashSegment::new($plainSegment);
+        $result = SlashSegment::new($plainSegment);
 
         if ($expectInstanceToBeReturned) {
-            $this->assertInstanceOf(TrailingSlashSegment::class, $result);
+            $this->assertInstanceOf(SlashSegment::class, $result);
         } else {
             $this->assertNull($result);
         }
