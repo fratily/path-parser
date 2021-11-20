@@ -12,23 +12,23 @@ $ composer require fratily/path-parser
 
 ```php
 $segments = \Fratily\PathParser\PathParser::parse('/foo/:id/bar/', [
-    \Fratily\PathParser\Segments\TrailingSlashSegment::class,
+    \Fratily\PathParser\Segments\SlashSegment::class,
     CustomSegment::class,
-    \Fratily\PathParser\Segments\AnySegment::class,
+    \Fratily\PathParser\Segments\PlainSegment::class,
 ]);
 
 var_dump(
     // /foo
-    get_class($segments[0]), // "Fratily\PathParser\Segments\AnySegment"
+    get_class($segments[0]), // "Fratily\PathParser\Segments\PlainSegment"
     $segments[0]->getSegment(), // "/foo"
     // /:id
     get_class($segments[1]), // "CustomSegment"
     $segments[0]->getName(), // "/id"
     // /bar
-    get_class($segments[2]), // "Fratily\PathParser\Segments\AnySegment"
+    get_class($segments[2]), // "Fratily\PathParser\Segments\PlainSegment"
     $segments[0]->getSegment(), // "/bar"
     // /
-    get_class($segments[3]), // "Fratily\PathParser\Segments\TrailingSlashSegment"
+    get_class($segments[3]), // "Fratily\PathParser\Segments\SlashSegment"
 );
 
 
